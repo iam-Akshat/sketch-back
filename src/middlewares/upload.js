@@ -1,7 +1,8 @@
 const multer = require('multer');
 const fs = require('fs');
+const isProduction = require('../utils/isProduction');
 
-const uploadsDir = __dirname+'../../../uploads';
+const uploadsDir = isProduction() ? '/tmp/uploads' : 'dirname'+'../../../uploads';
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
